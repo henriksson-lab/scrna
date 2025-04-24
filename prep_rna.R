@@ -29,8 +29,6 @@ if(TRUE){
 bascet_instance.default <- getBascetSingularityImage(store_at="~/mystore/")
 bascet_runner.default <- SlurmRunner(account="hpc2n2025-074", ncpu="10")
 
-bascetRoot <- file.path("/husky/henriksson/atrandi/250424_rnaseq6_miseq")  
-
 setwd(bascetRoot)
 
 ###################################################
