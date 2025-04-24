@@ -1,27 +1,26 @@
-if(FALSE){
-  source("/home/mahogny/github/zorn/R/job_general.R")
-  source("/home/mahogny/github/zorn/R/job_local.R")
-  source("/home/mahogny/github/zorn/R/job_slurm.R")
-  source("/home/mahogny/github/zorn/R/bascet_file.R")
-  source("/home/mahogny/github/zorn/R/zorn.R")
-  source("/home/mahogny/github/zorn/R/shell.R")
-  source("/home/mahogny/github/zorn/R/zorn_aggr.R")
-  source("/home/mahogny/github/zorn/R/aggr_functions.R")
-  source("/home/mahogny/github/zorn/R/count_kmer.R")
-  source("/home/mahogny/github/zorn/R/countsketch.R")
-  source("/home/mahogny/github/zorn/R/refgenome.R")
-  source("/home/mahogny/github/zorn/R/kraken.R")
-  source("/home/mahogny/github/zorn/R/container.R")
-  source("/home/mahogny/github/zorn/R/ext_tools.R")
+bascetRoot <- getwd()
+
+if(TRUE){
+  
+  setwd("~/github/zorn")
+  
+  source("R/job_general.R")
+  source("R/job_local.R")
+  source("R/job_slurm.R")
+  source("R/bascet_file.R")
+  source("R/zorn.R")
+  source("R/shell.R")
+  source("R/zorn_aggr.R")
+  source("R/count_kmer.R")
+  source("R/countsketch.R")
+  source("R/refgenome.R")
+  source("R/kraken.R")
+  source("R/container.R")
+  source("R/ext_tools.R")
   
 } else {
   library(Zorn)
 }
-
-library(Signac)
-library(Seurat)
-library(ggplot2)
-
 
 ################################################################################
 ################## Preprocessing with Bascet/Zorn ##############################
@@ -42,7 +41,6 @@ rawmeta_dir <- readLines("rawdata.txt")
 rawmeta <- DetectRawFileMeta(rawmeta_dir)
 
 barcode_error <- NULL
-
 if(file.exists("barcode_error.txt")) {
   barcode_error <- readLines("barcode_error.txt")
 }
@@ -124,7 +122,7 @@ system("echo END totirp >> time.txt; echo `date +%s` >> time.txt")
 system("echo START BascetAlignToReference >> time.txt; echo `date +%s` >> time.txt")
 BascetAlignToReference(
   bascetRoot,
-  useReference="/husky/fromsequencer/241210_joram_rnaseq/ref/all.fa",
+  useReference="/home/m/mahogny/mystore/atrandi/bwa_ref/yersinia/all.fa",
   numLocalThreads=10
 )
 system("echo END BascetAlignToReference >> time.txt; echo `date +%s` >> time.txt")
