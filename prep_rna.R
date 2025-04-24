@@ -120,7 +120,7 @@ system("echo END totirp >> time.txt; echo `date +%s` >> time.txt")
 system("echo START BascetAlignToReference >> time.txt; echo `date +%s` >> time.txt")
 BascetAlignToReference(
   bascetRoot,
-  inputName = "new_filtered",
+  inputName = "fastp",
   useReference="/home/m/mahogny/mystore/atrandi/bwa_ref/yersinia/all.fa",
   numLocalThreads=10
 )
